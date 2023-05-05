@@ -166,6 +166,7 @@ html, body {
   width: 30px;
   height: 30px;
   color: #fff;
+  
 }
 
 .social-icons.small .rectangle i {
@@ -187,6 +188,7 @@ html, body {
 .social-icons .rectangle {
   box-shadow: none;
   display: inline-block;
+  
 }
 
 /* Image responsive */
@@ -533,12 +535,14 @@ html, body {
 }
 
 .site-section h2 {
+  padding-top: 90px;
   font-family: "Varela", sans-serif;
   margin: 0;
   font-size: 32px;
   color: #196fc2;
   text-align: center;
   text-transform: uppercase;
+  margin-top: -30px;
 }
 
 .section-subtitle {
@@ -551,6 +555,7 @@ html, body {
   letter-spacing: 2px;
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 50px;
 }
 
 .section-subtitle span {
@@ -780,13 +785,15 @@ html, body {
 }
 
 .section-skills h2 {
-  position: relative;
+  text-align: center;
   padding-bottom: 20px;
   margin-bottom: 40px;
-  font-size: 18px;
+  margin-right: 10px;
+  font-size: 28px;
   color: #000;
+  text-decoration:underline;
   text-transform: uppercase;
-  text-align: left;
+
 }
 
 .section-skills h2:before {
@@ -881,6 +888,7 @@ html, body {
 /* Section: Counters */
 .site-section.section-counters {
   padding-bottom: 0;
+  /* margin-top: 200px; */
 }
 
 .site-section.section-counters .rectangle {
@@ -1028,6 +1036,7 @@ html, body {
   display: table-cell;
   vertical-align: middle;
   color: #000;
+  margin-bottom: 200px;
 }
 
 .service .rectangle {
@@ -1042,6 +1051,7 @@ html, body {
   margin-bottom: 0;
   text-transform: uppercase;
   font-size: 12px;
+  /* margin-bottom: 200px; */
 }
 
 .section-services .col-sm-7 {
@@ -1061,6 +1071,7 @@ html, body {
 
 .service-info p {
   margin: 30px 0 0;
+  
 }
 
 .nav-tabs .col-sm-fifth,
@@ -1527,8 +1538,9 @@ html, body {
 }
 
 /* Section: Clients */
-.section-clients {
+.our-skills {
   padding: 80px 0;
+  background-color: lightblue;
 }
 
 .client {
@@ -1538,6 +1550,8 @@ html, body {
   margin: 0 15px;
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
+  background-color: gray;
+
 }
 
 .client:hover {
@@ -1615,16 +1629,21 @@ textarea.form-control {
 .section-networks {
   padding: 30px 0;
   text-align: center;
+  margin-top: -100px;
+
 }
 
 .section-networks .container {
   max-width: 460px;
+  font-size: 17px;
+  /* letter-spacing: 1px; */
+  
 }
 
 .section-networks a {
   margin: 10px 8px 5px;
   color: #ffffff;
-  box-shadow: none;
+  box-shadow:#196fc0;
 }
 
 .section-networks a:hover, .section-networks a:focus {
@@ -1660,7 +1679,10 @@ textarea.form-control {
 }
 
 .site-footer ul a:hover {
-  color: #196fc2;
+  color: #196fc0;
+}
+.site-footer .btn{
+ color: white;
 }
 
 .site-footer a {
@@ -1670,7 +1692,9 @@ textarea.form-control {
 }
 
 .site-footer a:hover {
-  color: #196fc2;
+  color: white;
+  background-color: #196fc0;
+  transform: scale(1.11);
 }
 
 .site-footer .rectangle {
