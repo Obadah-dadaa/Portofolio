@@ -13,7 +13,42 @@ a:hover, a:focus {
   outline: 0 none;
   text-decoration: none;
 }
+.hero-job {
+  animation-name: typing;
+  animation-timing-function: steps(30, 90);
+  animation-duration: 4s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid  #196fc2;
+  animation-iteration-count: infinite;
 
+}  @keyframes typing {
+  from { width: 0 }
+  to { width: 19.46% }
+}
+#cv
+ {
+  animation-name: shake;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  /* text-transform:capitalize; */
+
+  
+}
+
+@keyframes shake {
+  0% { transform: translateY(0); }
+  10% { transform: translateY(-8px); }
+  20% { transform: translateY(8px); }
+  30% { transform: translateY(-8px); }
+  40% { transform: translateY(8px); }
+  50% { transform: translateY(-8px); }
+  60% { transform: translateY(8px); }
+  70% { transform: translateY(-8px); }
+  80% { transform: translateY(8px); }
+  90% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
 /* LAYOUT
 ================================================== */
 html, body {
@@ -958,7 +993,7 @@ html, body {
   min-height: 160px;
   width: 100%;
   margin: 70px 0 0;
-  /* margin-left: 240px; */
+  /* margin-right: 200px; */
   bottom: 0;
   left: 0;
   border-bottom: 0;
