@@ -1,58 +1,29 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Mail, Facebook, ChevronDown, ArrowRight } from 'lucide-react'
+import { PROJECTS } from '../data/projects'
 
-const TITLES = ['Web Developer', 'Frontend Developer', 'Backend Developer', 'Full Stack Developer']
+const TITLES = ['Fullstack Developer', 'Software Developer']
 
 const SOCIALS = [
-  { icon: Github,   href: 'https://github.com/Obadah-dadaa',                       label: 'GitHub'   },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/obadahdadaa',                label: 'LinkedIn' },
-  { icon: Mail,     href: 'mailto:Obadah.dada1999@gmail.com',                       label: 'Email'    },
-  { icon: Facebook, href: 'https://www.facebook.com/Obadah.D3D3?mibextid=ZbWKwL',  label: 'Facebook' },
+  { icon: Github,   href: 'https://github.com/obadah-dadaa',                        label: 'GitHub'   },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/obadahdadaa',                 label: 'LinkedIn' },
+  { icon: Mail,     href: 'mailto:Obadah.dada1999@gmail.com',                        label: 'Email'    },
+  { icon: Facebook, href: 'https://www.facebook.com/Obadah.D3D3?mibextid=ZbWKwL',   label: 'Facebook' },
 ]
 
 const STATS = [
-  { number: '4+',  label: 'Years Exp.' },
-  { number: '10+', label: 'Projects'   },
-  { number: '5+',  label: 'Clients'    },
+  { number: '5+',                    label: 'Years Exp.'  },
+  { number: String(PROJECTS.length), label: 'Projects'    },
+  { number: '5+',                    label: 'Clients'     },
 ]
 
 export default function Hero() {
   const [titleIdx, setTitleIdx] = useState(0)
-  const particlesRef = useRef(null)
 
-  // rotate title every 3 s
   useEffect(() => {
     const id = setInterval(() => setTitleIdx(i => (i + 1) % TITLES.length), 3000)
     return () => clearInterval(id)
-  }, [])
-
-  // build rising particles
-  useEffect(() => {
-    const container = particlesRef.current
-    if (!container) return
-
-    for (let i = 0; i < 30; i++) {
-      const p = document.createElement('div')
-      const size  = Math.random() * 2 + 1
-      const dur   = Math.random() * 10 + 8
-      const delay = Math.random() * 10
-      const op    = Math.random() * 0.5 + 0.2
-
-      p.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${Math.random() * 100}vw;
-        background: rgba(99,102,241,${op});
-        border-radius: 50%;
-        animation: particle ${dur}s linear ${delay}s infinite;
-        pointer-events: none;
-      `
-      container.appendChild(p)
-    }
-
-    return () => { while (container.firstChild) container.removeChild(container.firstChild) }
   }, [])
 
   const scrollTo = (id) => {
@@ -63,15 +34,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 pb-10 bg-[#05050f]"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 pb-10"
     >
-      {/* rising particles */}
-      <div ref={particlesRef} className="absolute inset-0 overflow-hidden pointer-events-none" />
-
-      {/* colour blobs */}
+      {/* atmospheric colour blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="animate-blob       absolute -top-52   -left-52  w-[600px] h-[600px] rounded-full bg-indigo-700/20 blur-[120px]" />
-        <div className="animate-blob-delay absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple-700/20 blur-[100px]" />
+        <div className="animate-blob        absolute -top-52   -left-52  w-[600px] h-[600px] rounded-full bg-indigo-700/20 blur-[120px]" />
+        <div className="animate-blob-delay  absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple-700/20 blur-[100px]" />
         <div className="animate-blob-delay2 absolute top-1/2 left-1/3  w-[320px] h-[320px] rounded-full bg-cyan-600/10  blur-[90px]"  />
       </div>
 
@@ -89,7 +57,7 @@ export default function Hero() {
       {/* content */}
       <div className="relative z-10 text-center px-5 max-w-3xl mx-auto">
 
-        {/* badge */}
+        {/* available badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,9 +86,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl sm:text-2xl font-semibold text-slate-400 mb-6 h-9 flex items-center justify-center gap-2"
+          className="text-xl sm:text-2xl font-semibold text-slate-400 mb-6 h-9 flex items-center justify-center"
         >
-          <span>I&apos;m a</span>
           <AnimatePresence mode="wait">
             <motion.span
               key={titleIdx}
@@ -135,17 +102,17 @@ export default function Hero() {
           </AnimatePresence>
         </motion.div>
 
-        {/* description */}
+        {/* bio — sourced from CV professional summary */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-base sm:text-lg text-slate-400 max-w-[540px] mx-auto leading-relaxed mb-8"
+          className="text-base sm:text-lg text-slate-400 max-w-[600px] mx-auto leading-relaxed mb-8"
         >
-          A passionate web developer based in{' '}
-          <span className="font-semibold text-slate-200">UAE</span>{' '}
-          standing at the sweet spot where design &amp; code intersect — building
-          professional, user-friendly web experiences.
+          Experienced Software Developer with expertise in responsive design, strong UI development,
+          and object-oriented programming principles — based in{' '}
+          <span className="font-semibold text-slate-200">Dubai, UAE</span>.
+          Passionate about delivering professional, clean code and creative solutions to technical challenges.
         </motion.p>
 
         {/* stats */}
@@ -157,17 +124,13 @@ export default function Hero() {
         >
           {STATS.map((s, i) => (
             <div key={i} className="text-center">
-              <span className="block text-3xl sm:text-4xl font-black gradient-text leading-none">
-                {s.number}
-              </span>
-              <span className="block text-xs text-slate-500 uppercase tracking-widest mt-1">
-                {s.label}
-              </span>
+              <span className="block text-3xl sm:text-4xl font-black gradient-text leading-none">{s.number}</span>
+              <span className="block text-xs text-slate-500 uppercase tracking-widest mt-1">{s.label}</span>
             </div>
           ))}
         </motion.div>
 
-        {/* buttons */}
+        {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

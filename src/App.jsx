@@ -1,4 +1,4 @@
-import { ThemeProvider } from './context/ThemeContext'
+import StarField from './components/StarField'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,8 +9,9 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans">
+    <div className="min-h-screen bg-[#05050f] text-slate-100 font-sans antialiased">
+      <StarField />
+      <div className="relative z-10">
         <Navbar />
         <main>
           <Hero />
@@ -21,6 +22,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </ThemeProvider>
+    </div>
   )
 }

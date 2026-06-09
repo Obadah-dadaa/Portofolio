@@ -1,25 +1,23 @@
 import { motion } from 'framer-motion'
-import { ArrowUp, Heart } from 'lucide-react'
+import { ArrowUp } from 'lucide-react'
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-white/10 py-6">
+    <footer className="border-t border-white/[0.06] py-6">
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between gap-4 flex-wrap">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1.5"
+          className="text-sm text-slate-500"
         >
-          &copy; 2024 Made with{' '}
-          <Heart size={14} className="text-red-500 fill-red-500 animate-pulse-slow" />{' '}
-          by{' '}
+          &copy; 2026 All Rights Reserved By{' '}
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); scrollTop() }}
-            className="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="font-semibold text-indigo-400 hover:text-purple-400 transition-colors"
           >
             Obadah Dadaa
           </a>

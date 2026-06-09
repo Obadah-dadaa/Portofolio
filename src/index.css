@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased bg-[#05050f];
   }
 
   ::-webkit-scrollbar {
@@ -16,11 +16,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-100 dark:bg-slate-900;
+    @apply bg-slate-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-indigo-400 dark:bg-indigo-600 rounded-full;
+    @apply bg-indigo-600 rounded-full;
   }
 }
 
@@ -33,19 +33,7 @@
     @apply bg-gradient-to-r from-cyan-400 to-indigo-500 bg-clip-text text-transparent;
   }
 
-  .card-light {
-    @apply bg-white border border-slate-200 shadow-sm;
-  }
-
-  .card-dark {
-    @apply dark:bg-white/5 dark:border-white/10 dark:shadow-none;
-  }
-
   .card {
-    @apply bg-white border border-slate-200 shadow-sm dark:bg-white/5 dark:border-white/10 dark:shadow-none;
-  }
-
-  .section-bg-alt {
-    @apply bg-slate-50 dark:bg-slate-900/50;
+    @apply bg-white/[0.04] border border-white/[0.08];
   }
 }
