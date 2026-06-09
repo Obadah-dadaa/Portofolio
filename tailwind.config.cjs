@@ -21,9 +21,7 @@ module.exports = {
         float: 'float 4s ease-in-out infinite',
         'spin-slow': 'spin 12s linear infinite',
         'pulse-slow': 'pulse 3s ease-in-out infinite',
-        twinkle: 'twinkle 4s ease-in-out infinite',
-        'twinkle-slow': 'twinkleSlow 6s ease-in-out infinite',
-        shooting: 'shootingStar 7s linear infinite',
+        particle: 'particle 10s linear infinite',
       },
       keyframes: {
         blob: {
@@ -35,17 +33,11 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-12px)' },
         },
-        twinkle: {
-          '0%, 100%': { opacity: '0', transform: 'scale(0.2)' },
-          '50%':       { opacity: '1', transform: 'scale(1)'   },
-        },
-        twinkleSlow: {
-          '0%, 100%': { opacity: '0.05' },
-          '40%, 60%': { opacity: '0.75' },
-        },
-        shootingStar: {
-          '0%':   { transform: 'translateX(0) translateY(0) scaleX(1)',   opacity: '1' },
-          '100%': { transform: 'translateX(-300px) translateY(300px) scaleX(8)', opacity: '0' },
+        particle: {
+          '0%':   { transform: 'translateY(100vh)',                      opacity: '0'   },
+          '10%':  {                                                        opacity: '1'   },
+          '90%':  {                                                        opacity: '0.6' },
+          '100%': { transform: 'translateY(-120px) translateX(30px)',    opacity: '0'   },
         },
       },
     },

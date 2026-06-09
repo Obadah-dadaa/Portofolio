@@ -5,10 +5,10 @@ import { Github, Linkedin, Mail, Facebook, ChevronDown, ArrowRight } from 'lucid
 const TITLES = ['Web Developer', 'Frontend Developer', 'Backend Developer', 'Full Stack Developer']
 
 const SOCIALS = [
-  { icon: Github,   href: 'https://github.com/Obadah-dadaa',                             label: 'GitHub'   },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/obadahdadaa',                      label: 'LinkedIn' },
-  { icon: Mail,     href: 'mailto:Obadah.dada1999@gmail.com',                             label: 'Email'    },
-  { icon: Facebook, href: 'https://www.facebook.com/Obadah.D3D3?mibextid=ZbWKwL',        label: 'Facebook' },
+  { icon: Github,   href: 'https://github.com/Obadah-dadaa',                       label: 'GitHub'   },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/obadahdadaa',                label: 'LinkedIn' },
+  { icon: Mail,     href: 'mailto:Obadah.dada1999@gmail.com',                       label: 'Email'    },
+  { icon: Facebook, href: 'https://www.facebook.com/Obadah.D3D3?mibextid=ZbWKwL',  label: 'Facebook' },
 ]
 
 const STATS = [
@@ -17,100 +17,41 @@ const STATS = [
   { number: '5+',  label: 'Clients'    },
 ]
 
-/* ─── helpers ─────────────────────────────────────────────── */
-const rand = (min, max) => Math.random() * (max - min) + min
-
-function buildStars(container) {
-  const frag = document.createDocumentFragment()
-
-  // ── tiny twinkling stars ──────────────────────────────────
-  for (let i = 0; i < 120; i++) {
-    const el = document.createElement('div')
-    const size    = rand(0.8, 2.4)
-    const dur     = rand(2, 7)
-    const delay   = rand(0, 10)
-    const bright  = rand(0.4, 1)
-    const color   = Math.random() > 0.8
-      ? `rgba(167,139,250,${bright})`   // occasional purple tint
-      : `rgba(255,255,255,${bright})`
-
-    el.style.cssText = `
-      position:absolute;
-      width:${size}px;
-      height:${size}px;
-      left:${rand(0, 100)}%;
-      top:${rand(0, 100)}%;
-      background:${color};
-      border-radius:50%;
-      box-shadow:0 0 ${size * 2}px ${color};
-      animation:twinkle ${dur}s ease-in-out ${delay}s infinite;
-      pointer-events:none;
-    `
-    frag.appendChild(el)
-  }
-
-  // ── larger glowing stars ──────────────────────────────────
-  for (let i = 0; i < 18; i++) {
-    const el   = document.createElement('div')
-    const size = rand(2.5, 4.5)
-    const dur  = rand(3, 8)
-    const delay = rand(0, 8)
-
-    el.style.cssText = `
-      position:absolute;
-      width:${size}px;
-      height:${size}px;
-      left:${rand(0, 100)}%;
-      top:${rand(0, 100)}%;
-      background:white;
-      border-radius:50%;
-      box-shadow:0 0 ${size * 3}px 1px rgba(165,180,252,0.9);
-      animation:twinkleSlow ${dur}s ease-in-out ${delay}s infinite;
-      pointer-events:none;
-    `
-    frag.appendChild(el)
-  }
-
-  // ── shooting stars ────────────────────────────────────────
-  for (let i = 0; i < 5; i++) {
-    const el    = document.createElement('div')
-    const dur   = rand(4, 9)
-    const delay = rand(0, 20)
-
-    el.style.cssText = `
-      position:absolute;
-      width:2px;
-      height:2px;
-      left:${rand(10, 90)}%;
-      top:${rand(5, 40)}%;
-      background:white;
-      border-radius:50%;
-      box-shadow:-60px 0 18px 2px rgba(255,255,255,0.6);
-      animation:shootingStar ${dur}s linear ${delay}s infinite;
-      pointer-events:none;
-    `
-    frag.appendChild(el)
-  }
-
-  container.appendChild(frag)
-}
-
-/* ─── component ───────────────────────────────────────────── */
 export default function Hero() {
   const [titleIdx, setTitleIdx] = useState(0)
-  const starsRef  = useRef(null)
+  const particlesRef = useRef(null)
 
-  // rotate title
+  // rotate title every 3 s
   useEffect(() => {
     const id = setInterval(() => setTitleIdx(i => (i + 1) % TITLES.length), 3000)
     return () => clearInterval(id)
   }, [])
 
-  // build starfield once
+  // build rising particles
   useEffect(() => {
-    const container = starsRef.current
+    const container = particlesRef.current
     if (!container) return
-    buildStars(container)
+
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div')
+      const size  = Math.random() * 2 + 1
+      const dur   = Math.random() * 10 + 8
+      const delay = Math.random() * 10
+      const op    = Math.random() * 0.5 + 0.2
+
+      p.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}vw;
+        background: rgba(99,102,241,${op});
+        border-radius: 50%;
+        animation: particle ${dur}s linear ${delay}s infinite;
+        pointer-events: none;
+      `
+      container.appendChild(p)
+    }
+
     return () => { while (container.firstChild) container.removeChild(container.firstChild) }
   }, [])
 
@@ -122,20 +63,19 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      /* always dark so stars always pop */
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16 pb-10 bg-[#05050f]"
     >
-      {/* ── starfield layer ─────────────────────────────── */}
-      <div ref={starsRef} className="absolute inset-0 overflow-hidden pointer-events-none" />
+      {/* rising particles */}
+      <div ref={particlesRef} className="absolute inset-0 overflow-hidden pointer-events-none" />
 
-      {/* ── soft colour blobs ───────────────────────────── */}
+      {/* colour blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="animate-blob          absolute -top-52  -left-52  w-[600px] h-[600px] rounded-full bg-indigo-700/20  blur-[120px]" />
-        <div className="animate-blob-delay    absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple-700/20  blur-[100px]" />
-        <div className="animate-blob-delay2   absolute top-1/2 left-1/3   w-[320px] h-[320px] rounded-full bg-cyan-600/10    blur-[90px]"  />
+        <div className="animate-blob       absolute -top-52   -left-52  w-[600px] h-[600px] rounded-full bg-indigo-700/20 blur-[120px]" />
+        <div className="animate-blob-delay absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-purple-700/20 blur-[100px]" />
+        <div className="animate-blob-delay2 absolute top-1/2 left-1/3  w-[320px] h-[320px] rounded-full bg-cyan-600/10  blur-[90px]"  />
       </div>
 
-      {/* ── subtle grid ─────────────────────────────────── */}
+      {/* subtle grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
@@ -146,10 +86,10 @@ export default function Hero() {
         }}
       />
 
-      {/* ── main content ────────────────────────────────── */}
+      {/* content */}
       <div className="relative z-10 text-center px-5 max-w-3xl mx-auto">
 
-        {/* availability badge */}
+        {/* badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -227,7 +167,7 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* CTA buttons */}
+        {/* buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -276,7 +216,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── scroll indicator ────────────────────────────── */}
+      {/* scroll indicator */}
       <motion.button
         onClick={() => scrollTo('about')}
         initial={{ opacity: 0 }}
@@ -285,10 +225,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500 hover:text-indigo-400 transition-colors"
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
           <ChevronDown size={20} />
         </motion.div>
       </motion.button>
