@@ -74,7 +74,7 @@ export default function About() {
                 and teamwork.
               </p>
               <motion.a
-                href="/img/Obadah Dadaa Software Developer.pdf"
+                href={`${import.meta.env.BASE_URL}img/Obadah Dadaa Software Developer.pdf`}
                 download
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
