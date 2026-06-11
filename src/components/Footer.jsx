@@ -13,7 +13,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-sm text-slate-500"
         >
-          &copy; 2026 All Rights Reserved By{' '}
+          &copy; 2026{' '}
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); scrollTop() }}
@@ -21,6 +21,7 @@ export default function Footer() {
           >
             Obadah Dadaa
           </a>
+          . All rights reserved.
         </motion.p>
 
         <motion.button

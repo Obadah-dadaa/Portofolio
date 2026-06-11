@@ -16,7 +16,7 @@ function ProjectCard({ project, i }) {
       className="card rounded-2xl overflow-hidden hover:border-indigo-500/40 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col"
     >
       {/* Image — clean, no overlay */}
-      <div className="relative h-48 overflow-hidden bg-white/5 flex-shrink-0">
+      <div className="relative h-44 sm:h-48 overflow-hidden bg-white/5 flex-shrink-0">
         <img
           src={project.image}
           alt={project.title}
@@ -30,7 +30,7 @@ function ProjectCard({ project, i }) {
       </div>
 
       {/* Card body */}
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-4 sm:p-5 flex flex-col flex-1">
         {/* Title + links */}
         <div className="flex items-start justify-between gap-2 mb-3">
           <h3 className="font-bold text-slate-100 text-base leading-snug">{project.title}</h3>
@@ -42,7 +42,7 @@ function ProjectCard({ project, i }) {
                 rel="noreferrer"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-slate-400 hover:text-indigo-400 transition-colors"
+                className="text-slate-400 hover:text-indigo-400 transition-colors p-1 touch-manipulation"
                 title="Live Demo"
               >
                 <ExternalLink size={15} />
@@ -55,7 +55,7 @@ function ProjectCard({ project, i }) {
                 rel="noreferrer"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-slate-400 hover:text-indigo-400 transition-colors"
+                className="text-slate-400 hover:text-indigo-400 transition-colors p-1 touch-manipulation"
                 title="View Code"
               >
                 <Github size={15} />
@@ -71,7 +71,7 @@ function ProjectCard({ project, i }) {
           </p>
           <button
             onClick={() => setExpanded(e => !e)}
-            className="mt-1.5 flex items-center gap-1 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors"
+            className="mt-1.5 flex items-center gap-1 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors touch-manipulation"
           >
             {expanded ? 'Show less' : 'Read more'}
             <motion.span animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -100,7 +100,7 @@ function ProjectCard({ project, i }) {
             rel="noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-4 flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-semibold shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow"
+            className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 sm:py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-semibold shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-shadow touch-manipulation"
           >
             <ExternalLink size={13} /> View Live Demo
           </motion.a>
@@ -112,20 +112,20 @@ function ProjectCard({ project, i }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24">
-      <div className="max-w-6xl mx-auto px-5">
+    <section id="projects" className="py-16 sm:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-5">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight gradient-text mb-3">Projects</h2>
           <p className="text-slate-500">Some things I&apos;ve built</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto">
           {PROJECTS.map((p, i) => (
             <ProjectCard key={p.title} project={p} i={i} />
           ))}

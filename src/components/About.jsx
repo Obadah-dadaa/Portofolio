@@ -45,10 +45,10 @@ const TECH = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
-      <div className="max-w-6xl mx-auto px-5">
+    <section id="about" className="py-16 sm:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-5">
 
-        <motion.div {...fadeUp()} className="text-center mb-16">
+        <motion.div {...fadeUp()} className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight gradient-text mb-3">About Me</h2>
           <p className="text-slate-500">Who I am &amp; what I work with</p>
         </motion.div>
@@ -57,7 +57,7 @@ export default function About() {
         <motion.div
           {...fadeUp(0.1)}
           whileHover={{ y: -3 }}
-          className="card rounded-2xl p-6 sm:p-8 mb-10 transition-all duration-300 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10"
+          className="card rounded-2xl p-5 sm:p-8 mb-10 transition-all duration-300 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10"
         >
           <div className="flex flex-col gap-5">
             <div>
@@ -78,7 +78,7 @@ export default function About() {
                 download
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/45 transition-shadow"
+                className="inline-flex items-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/45 transition-shadow touch-manipulation"
               >
                 <Download size={15} /> Download CV
               </motion.a>

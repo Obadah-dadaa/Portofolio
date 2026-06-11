@@ -50,9 +50,9 @@ const SOCIALS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24">
-      <div className="max-w-5xl mx-auto px-5">
-        <motion.div {...fadeUp()} className="text-center mb-14">
+    <section id="contact" className="py-16 sm:py-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-5">
+        <motion.div {...fadeUp()} className="text-center mb-10 sm:mb-14">
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight gradient-text mb-3">Get In Touch</h2>
           <p className="text-slate-500">Let&apos;s work together</p>
         </motion.div>
@@ -64,7 +64,7 @@ export default function Contact() {
               key={c.title}
               {...fadeUp(i * 0.08)}
               whileHover={{ y: -5 }}
-              className={`card rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-lg ${c.hover}`}
+              className={`card rounded-2xl p-5 sm:p-6 text-center transition-all duration-300 hover:shadow-lg ${c.hover}`}
             >
               <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${c.gradient} flex items-center justify-center mx-auto mb-4 shadow-md`}>
                 <c.icon size={22} className="text-white" />
@@ -74,7 +74,7 @@ export default function Contact() {
               {c.href ? (
                 <a
                   href={c.href}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-purple-400 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-purple-400 transition-colors touch-manipulation"
                 >
                   {c.label} →
                 </a>
@@ -89,7 +89,7 @@ export default function Contact() {
         <motion.div
           {...fadeUp(0.3)}
           whileHover={{ y: -4 }}
-          className="card rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-center justify-between gap-5 border-emerald-500/20 bg-gradient-to-r from-emerald-500/8 to-teal-500/8 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300"
+          className="card rounded-2xl p-5 sm:p-6 mb-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 border-emerald-500/20 bg-gradient-to-r from-emerald-500/8 to-teal-500/8 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300"
         >
           <div className="flex items-center gap-4">
             <div className="relative w-12 h-12 flex-shrink-0">
@@ -108,7 +108,7 @@ export default function Contact() {
             download
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-semibold shadow-md shadow-emerald-500/25 whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-semibold shadow-md shadow-emerald-500/25 whitespace-nowrap w-full sm:w-auto justify-center touch-manipulation"
           >
             <Download size={15} /> Download CV
           </motion.a>
@@ -134,7 +134,7 @@ export default function Contact() {
               transition={{ delay: 0.35 + i * 0.07 }}
               whileHover={{ scale: 1.06, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-400 text-sm font-semibold hover:text-white transition-all duration-250 hover:shadow-lg ${s.color}`}
+              className={`flex items-center gap-2.5 px-5 py-3 sm:py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-400 text-sm font-semibold hover:text-white transition-all duration-250 hover:shadow-lg touch-manipulation ${s.color}`}
             >
               <s.icon size={18} />
               {s.label}

@@ -86,7 +86,7 @@ function JobCard({ job, i }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: i * 0.1 }}
-      className="relative pl-10 sm:pl-14"
+      className="relative pl-8 sm:pl-14"
     >
       {/* Timeline dot */}
       <motion.div
@@ -97,16 +97,16 @@ function JobCard({ job, i }) {
       <motion.div
         whileHover={{ x: 4 }}
         transition={{ duration: 0.2 }}
-        className="card rounded-2xl p-5 sm:p-6 cursor-pointer select-none hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300"
+        className="card rounded-2xl p-4 sm:p-6 cursor-pointer select-none hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300"
         onClick={() => setExpanded(e => !e)}
       >
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4">
+        {/* Header — stacks on mobile, side-by-side on sm+ */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
           <div className="flex items-start gap-3">
             <div className={`hidden sm:flex w-10 h-10 rounded-xl bg-gradient-to-br ${job.color} items-center justify-center flex-shrink-0 shadow-sm`}>
               <Briefcase size={16} className="text-white" />
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="font-bold text-slate-100 text-base sm:text-lg leading-snug">{job.title}</h3>
               <p className={`text-sm font-semibold mt-0.5 bg-gradient-to-r ${job.color} bg-clip-text text-transparent`}>
                 {job.company}
@@ -114,11 +114,12 @@ function JobCard({ job, i }) {
               <p className="text-xs text-slate-500 mt-0.5">{job.location}</p>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-            <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 bg-white/[0.06] px-3 py-1 rounded-full font-medium whitespace-nowrap">
+          {/* Date + type — row on mobile, column on sm+ */}
+          <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-1.5 flex-shrink-0 sm:ml-0 pl-0 sm:pl-0">
+            <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 bg-white/[0.06] px-2.5 sm:px-3 py-1 rounded-full font-medium whitespace-nowrap">
               <Calendar size={11} /> {job.date}
             </span>
-            <span className="text-xs text-slate-500">{job.type}</span>
+            <span className="text-xs text-slate-500 whitespace-nowrap">{job.type}</span>
           </div>
         </div>
 
@@ -126,7 +127,7 @@ function JobCard({ job, i }) {
         <p className="mt-3 text-sm text-slate-400 leading-relaxed">{job.description}</p>
 
         {/* Expand toggle */}
-        <button className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors">
+        <button className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-purple-400 transition-colors touch-manipulation">
           {expanded ? 'Hide details' : 'Show details'}
           <motion.span animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.25 }}>
             <ChevronDown size={14} />
@@ -180,14 +181,14 @@ function JobCard({ job, i }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24">
-      <div className="max-w-3xl mx-auto px-5">
+    <section id="experience" className="py-16 sm:py-24">
+      <div className="max-w-3xl mx-auto px-4 sm:px-5">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-black tracking-tight gradient-text mb-3">Experience</h2>
           <p className="text-slate-500">My professional journey</p>
@@ -202,7 +203,7 @@ export default function Experience() {
             style={{ originY: 0 }}
             className="absolute left-[7px] top-6 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 via-cyan-500 to-transparent"
           />
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {JOBS.map((job, i) => (
               <JobCard key={i} job={job} i={i} />
             ))}
