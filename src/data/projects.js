@@ -12,6 +12,16 @@ export const PROJECTS = [
     featured: true,
   },
   {
+    title: "Seva Store – Fashion E-Commerce",
+    description:
+      "A full-stack e-commerce platform for a fashion and luxury abaya brand, built with Laravel and a fully custom frontend. Features a bilingual Arabic/English interface with automatic RTL/LTR switching, a category-based catalog with multi-image products, and a \"Pre-order\" system letting customers request items that aren't in stock yet. Customers register with their phone number and get a personal portal to browse orders, track any order by its number through a full status history, and receive web push notifications (via service worker) whenever their order status changes. The admin dashboard provides complete control over categories, products, pre-orders, order management with live notifications, and an editable return & exchange policy.",
+    image: `${B}img/seva-store.jpg`,
+    tags: ["PHP", "Laravel", "JavaScript", "MySQL", "Blade", "Web Push"],
+    demo: "https://www.seva-store.com/",
+    github: "https://github.com/Obadah-dadaa/Seva",
+    featured: false,
+  },
+  {
     title: "Car Buying & Selling System - Marota Cars",
     description:
       "A dynamic web application for buying and selling cars, incorporating features such as search filters, user authentication, and real-time updates using Ajax. The platform enables users to subscribe and select a package, post or browse car listings, and communicate directly with advertisers through an in-app chat system. Supported by a dedicated mobile application and a comprehensive admin dashboard for full site control and analytics.",
