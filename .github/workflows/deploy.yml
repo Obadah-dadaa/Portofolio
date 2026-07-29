@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [source]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,8 +25,16 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages
+      # GitHub Pages serves this repo from the master branch, so the build
+      # output is published there. The action deletes anything on master that
+      # isn't in ./dist, so carry the README over to keep it on the repo's
+      # default branch.
+      - name: Keep README on master
+        run: cp README.md dist/
+
+      - name: Publish build to master
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: master
