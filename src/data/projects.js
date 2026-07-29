@@ -5,7 +5,7 @@ export const PROJECTS = [
     title: "Internal ERP System – Al Mutakamela",
     description:
       "Contributing to a company-wide ERP system supporting multiple departments: HR (employee records, attendance tracking, role-based access control), Finance (transaction management, invoicing, reporting, and fee structures), Operations (vehicle inspection records, testing workflows, and service tracking), and IT (system monitoring and access management). Building and maintaining RESTful APIs powering internal ERP modules and the company's mobile application. Translating Figma UI/UX designs into responsive frontend interfaces, handling database optimization, and participating in workflow automation and inter-department approval chains.",
-    image: `${B}img/web-development.jpg`,
+    image: `${B}img/erp-dashboard.png`,
     tags: ["PHP", "Laravel", "JavaScript", "Bootstrap", "Ajax", "SQL Server"],
     demo: null,
     github: null,
@@ -19,7 +19,7 @@ export const PROJECTS = [
     tags: ["PHP", "Laravel", "JavaScript", "MySQL", "Blade", "Web Push"],
     demo: "https://www.seva-store.com/",
     github: "https://github.com/Obadah-dadaa/Seva",
-    featured: false,
+    featured: true,
   },
   {
     title: "Car Buying & Selling System - Marota Cars",
